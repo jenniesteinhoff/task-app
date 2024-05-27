@@ -1,26 +1,39 @@
 import React, {useState} from "react";
-import { Card } from "./Card";
 import { Button } from "./Button";
 
 export const Form = ({ addTodo }) => {
   const [title, setTitle] = useState("");
   const [task, setTask] = useState("");
   const [day, setDay] = useState("");
+  const [index, setIndex] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
     const newTodo = {
+      index,
       title,
       task,
       day,
     };
 
+    if (newTodo.title === "", newTodo.task === "", newTodo.day === "") {
+      alert("Not a valid input")
+    }
+    else if (newTodo.index === 11) {
+      alert("You have reached max amount of tasks")
+    }
+    else {
     addTodo(newTodo);
     console.log(newTodo);
+    setIndex(index+1);
     setTitle("");
     setTask("");
-    setDay("");
+    setDay("");    
+    }
+
+
   };
 
 
@@ -31,12 +44,12 @@ export const Form = ({ addTodo }) => {
 
         <div className="title-section">
         <p>Title</p>
-        <input value={title} type="text" placeholder="Name your task" onChange={(e) => setTitle(e.target.value)}/>
+        <input maxLength={12} value={title} type="text" placeholder="Name your task" onChange={(e) => setTitle(e.target.value)}/>
         </div>
 
         <div className="task-section">
         <p>Task</p>
-        <input value={task} type="text" placeholder="Describe your task" onChange={(e) => setTask(e.target.value)}/>
+        <input maxLength={20} value={task} type="text" placeholder="Describe your task" onChange={(e) => setTask(e.target.value)}/>
         </div>
 
         <div className="day-section">
@@ -54,9 +67,8 @@ export const Form = ({ addTodo }) => {
           <option value="Sunday">sunday</option>
         </select>
         </div>
-        
       </label>
-      <Button type="submit"><p>Add task</p></Button>  
+      <Button type="submit">Add task</Button>
     </form>
   )
 };

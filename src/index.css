@@ -13,36 +13,65 @@ body {
   align-items: center;
 }
 .menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  padding: 30px;
+}
+.createtask-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  justify-items: start;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, 1fr);
   grid-gap: 30px;
   margin: 30px;
   padding: 30px;
+
+  a {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
 }
+
+
 .flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 6px 5px 6px;
+  background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
+  box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
 }
 .title {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
 }
 .task {
   letter-spacing: normal;
-  font-size: 17px;  
+  font-size: 16px; 
+  margin-top: 5px; 
+}
+.task, .day {
+  padding: 0px 6px;
 }
 .task, p {
   font-family: "Andika", sans-serif;
 }
+.form-label, .username-label {
+  p {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+}
 p {
-  font-size: 16px;
+  font-size: 15px;
   margin: 0;
 }
-.title, .checkbox-label, h1, h2 {
+.title, .checkbox-label, h1, h2, h3 {
   color: #000; 
   font-family: "Iceberg", sans-serif;
   font-style: normal;
@@ -50,14 +79,14 @@ p {
   letter-spacing: 1.5px;
   margin: 0;
 }
-.task, .day, .title, .checkbox-label, h1, h2 {
+.task, .day, .title, .checkbox-label, h1, h2, h3 {
   color: #000; 
   font-style: normal;
   line-height: normal;
 
 }
 .form {
-  grid-column: 1 / 2;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
   display: flex;
   flex-direction: column;
@@ -66,6 +95,33 @@ p {
   height: 50vh;
   background-color: #FFF;
   border: 2px solid #000;  
+}
+.form-username {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 35vh;
+  height: 26vh;
+  background-color: #FFF;
+  border: 2px solid #000;
+
+  input[type="text"] {
+    margin: 0px 15px;
+  }
+  .username-label {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
+  button {
+    background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
+    border: 2px solid #000;
+  }
+}
+input[type="text"], select {
+  font-size: 15px;
 }
 input[type="checkbox"] {
   display: none;
@@ -76,18 +132,32 @@ input[type="checkbox"] {
   margin: 20px 15px;
 }
 .todo-list {
-  grid-column: 2 / 3;
+  grid-column: 3 / 5;
   grid-row: 1 / 2;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  height: 50vh;
-  width: 40vh;
+  min-height: 50vh;
+  max-height: 60vh;
+  min-width: 40vh;
   background-color: #FFF;
-  border: 2px solid #000;  
+  border: 2px solid #000;
+
+  &.empty {
+    align-items: center;
+    justify-content: center;
+
+    & p {
+      color: #8e8e8e;
+      font-size: 20px;
+    }
+    
+  }
 }
 .todo-card {
-  padding: 10px 10px;
   max-height: max-content;
+  width: 40vh;
+  border-bottom: 2px solid #000;
 }
 .checkbox-label, .day {
   display: flex;
@@ -98,20 +168,18 @@ input[type="checkbox"] {
 .day {
   justify-content: flex-end;
   text-transform: lowercase;
+  margin-bottom: 5px;
 }
 
 .icon {
   margin: 0px 5px;
-}
-.icon.calender {
-  margin: 0px 8px;
 }
 .icons {
   display: flex;
   align-items: center;
 }
 .incomplete {
-  color: #848484;
+  color: #889eb9;
   cursor: pointer;
 }
 .complete {
@@ -137,13 +205,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px;
   width: 480px;
   height: 110px;
   border: 2px solid #000;
   background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
 }
-h1, h2 {
+h1, h2, h3 {
   
   text-align: center;
   text-transform: uppercase;
@@ -158,6 +227,12 @@ h2 {
   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
   border-bottom: 2px solid #6385b9;
   padding: 20px 40px;
+}
+h3 {
+  font-size: 25px;
+  background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
+  padding: 15px 35px;
 }
 button {
   font-family: "Iceberg", sans-serif;

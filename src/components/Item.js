@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { faCircleXmark, faCircleCheck, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-export const Item = ({ todo, handleDelete, editTodo }) => {
-  // const [title, setTitle] = useState("Title");
+export const Item = ({ todo, handleDelete }) => {
   const [complete, setComplete] = useState(todo.complete);
 
   const handleChange = (e) => {

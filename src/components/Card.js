@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Card = ({children, reverse, create }) => {
+export const Card = ({ children }) => {
   return (
   <div className="todo-card">
   

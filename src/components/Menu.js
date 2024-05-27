@@ -1,27 +1,25 @@
-import React, {useState} from "react";
-import { v4 as uuidv4 } from "uuid";
-import { List } from "./List";
-import { todoData } from "./data/Todo";
-import { Form } from "./Form";
+import React from "react";
+import { Link } from "react-router-dom";
+import { CreateTask } from "./CreateTask";
+import { Button } from "./Button";
+import { Username } from "./Username";
 
 export const Menu = () => {
-  const [todo, setTodo] = useState(todoData);
-
-  const addTodo = (newTodo) => {
-    newTodo.id = uuidv4();
-    setTodo([newTodo, ...todo]);
-  };
-
-  const deleteTodo = (id) => {
-    if (window.confirm("Are you sure you want to delete your task?")) {
-      setTodo(todo.filter((item) => item.id !== id));
-    }
-  };
 
   return (
-    <div className="menu-container">
-    <Form addTodo={addTodo} />
-    <List todo={todo} handleDelete={deleteTodo} />
-    </div>  
+  <div className="menu-container">
+
+    <Username/>
+
+    <Link to="/createtask">
+      <Button children="Create Tasks"/>
+    </Link>
+    <Link to="/help">
+      <Button children="Help"/>
+    </Link>
+    <Link to="/exit">
+      <Button children="Exit"/>
+    </Link>
+  </div>  
   );
 };

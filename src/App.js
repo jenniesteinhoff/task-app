@@ -1,9 +1,10 @@
 import './index.css';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-import { Menu } from './components/Menu';
+import { Username } from './components/Username';
 import { Header } from './components/Header';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
+import { CreateTask } from './components/CreateTask';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Menu />} />
+        <Route path='/' element={<Username />} />
+        <Route path='/createtask' element={<CreateTask />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
