@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Button = ({ children, type, isDisabled }) => {
+export const Button = ({ children, type, isDisabled, buttonClass }) => {
   return (
-  <button type={type} disabled={isDisabled} className="btn">
+  <button type={type} disabled={isDisabled} className={buttonClass}>
     {children}
   </button>
   );

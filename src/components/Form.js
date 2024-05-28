@@ -10,7 +10,6 @@ export const Form = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
     const newTodo = {
       index,
       title,
@@ -18,11 +17,11 @@ export const Form = ({ addTodo }) => {
       day,
     };
 
-    if (newTodo.title === "", newTodo.task === "", newTodo.day === "") {
-      alert("Not a valid input")
+    if (newTodo.title.trim() === "", newTodo.task.trim() === "", newTodo.day === "") {
+    alert("Not a valid input")
     }
     else if (newTodo.index === 11) {
-      alert("You have reached max amount of tasks")
+    alert("You have reached max amount of tasks")
     }
     else {
     addTodo(newTodo);
@@ -32,8 +31,6 @@ export const Form = ({ addTodo }) => {
     setTask("");
     setDay("");    
     }
-
-
   };
 
 
@@ -68,7 +65,7 @@ export const Form = ({ addTodo }) => {
         </select>
         </div>
       </label>
-      <Button type="submit">Add task</Button>
+      <Button type="submit" children="Add task" buttonClass="btn todoform"/>
     </form>
   )
 };

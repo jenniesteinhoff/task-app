@@ -12,12 +12,20 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.overlay {
+  display: flex;
+  position: fixed;
+  width: -webkit-fill-available;
+  height: 45vh;
+  flex-direction: column;
+  align-items: center;
+}
 .menu-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
   padding: 30px;
+  margin: 30px;
 }
 .createtask-container {
   display: grid;
@@ -27,15 +35,14 @@ body {
   grid-template-rows: repeat(1, 1fr);
   grid-gap: 30px;
   margin: 30px;
-  padding: 30px;
+
 
   a {
+    align-self: end;
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-row: 1 / 2;
   }
 }
-
-
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -44,6 +51,49 @@ body {
   padding: 10px 6px 5px 6px;
   background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
+}
+.exit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  width: -webkit-fill-available;
+  justify-content: center;
+
+  p {
+    font-family: "Iceberg", sans-serif;
+    letter-spacing: 1.5px;
+    font-size: 24px;
+    text-align: center;
+  }
+}
+.help-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;  
+  height: 50vh;
+  width: 40vh;
+  padding: 30px;
+  margin: 30px;
+  background: white;
+  border: 2px solid #000;
+
+  a {
+    align-self: center;
+  }
+  p {
+    grid-column: 2 / 3;
+    font-size: 18px;
+  }
+  h3 {
+    
+    border: 2px solid #000;
+  }
+  .help-icon {
+    grid-column: 1 / 2;
+    cursor: default;
+  }
 }
 .title {
   text-transform: uppercase;
@@ -101,23 +151,18 @@ p {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  width: 35vh;
-  height: 26vh;
+  width: 40vh;
+  margin: 30px;
   background-color: #FFF;
   border: 2px solid #000;
 
   input[type="text"] {
-    margin: 0px 15px;
+    margin: 30px 30px 10px 30px;
   }
   .username-label {
     display: flex;
     flex-direction: column;
     height: max-content;
-  }
-  button {
-    background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
-    border: 2px solid #000;
   }
 }
 input[type="text"], select {
@@ -170,13 +215,24 @@ input[type="checkbox"] {
   text-transform: lowercase;
   margin-bottom: 5px;
 }
-
-.icon {
-  margin: 0px 5px;
-}
 .icons {
   display: flex;
   align-items: center;
+}
+.help-icons {
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  align-self: flex-start;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 10px 0px;
+}
+.icon {
+  margin: 0px 5px;
+}
+.help-icon {
+  margin: 5px;
 }
 .incomplete {
   color: #889eb9;
@@ -191,7 +247,63 @@ input[type="checkbox"] {
   align-self: center;
   max-width: max-content;
   margin: 20px;
-  padding: 10px 15px;
+  font-family: "Iceberg", sans-serif;
+  color: #000;
+  text-align: center;
+  font-weight: 400;
+  cursor: pointer;
+
+  &.menu, &.exit, &.help {
+  border: 2px solid #000;
+  }
+  &.menu, &.exit {
+  background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
+  }
+  &.exit {
+  padding: 10px 30px;
+  font-size: 26px;
+  }
+  &.menu {
+  padding: 15px 35px;
+  font-size: 35px;
+  }
+  &.menu, &.username {
+  text-transform: uppercase;  
+  }
+  &.username {
+  padding: 10px 25px;
+  }
+  &.todoform, &.username {
+  border: 2px solid #6385b9;
+  }
+  &.todoform, &.username, &.help {
+  font-size: 25px;
+  background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
+  box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
+  }
+  &.todoform, &.help {
+  padding: 10px 25px;
+  }
+}
+
+.btn:hover {
+  transition: 0.5s;
+
+  &.menu:hover, &.exit:hover {
+  border: 2px solid rgb(168, 162, 115);
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.40) inset;
+  }
+  &.username:hover, &.todoform:hover, &.help {
+  border: 2px solid rgb(173, 191, 219);
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(89, 145, 198, 0.25) inset;
+  }
+}
+.btn:active {
+  transition: 0.3s;
+  transform: translateY(3px);
 }
 
 
@@ -205,42 +317,36 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 40px;
   width: 480px;
   height: 110px;
   border: 2px solid #000;
   background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
 }
-h1, h2, h3 {
-  
+h1, h2, h3, h4 {
   text-align: center;
-  text-transform: uppercase;
   font-weight: 700;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+h2, h3 {
+  background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
+  box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
+  border-bottom: 2px solid #6385b9;  
 }
 h1 {
   font-size: 48px;
 }
 h2 {
   font-size: 32px;
-  background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
-  box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
-  border-bottom: 2px solid #6385b9;
   padding: 20px 40px;
 }
 h3 {
-  font-size: 25px;
-  background: radial-gradient(50% 50% at 50% 50%, #FCFFEC 0%, #FFF7CB 100%);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 30px 6px rgba(198, 180, 89, 0.50) inset;
+  font-size: 28px;
   padding: 15px 35px;
 }
-button {
-  font-family: "Iceberg", sans-serif;
-  color: #000;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 400;
-  background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #E3EEFF 100%);
-  box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%), 0px 0px 30px 6px rgb(89 145 198 / 30%) inset;
-  border: 2px solid #6385b9;
+h4 {
+  font-size: 24px;
 }

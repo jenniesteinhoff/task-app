@@ -1,10 +1,11 @@
 import './index.css';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-import { Username } from './components/Username';
 import { Header } from './components/Header';
-import { Register } from './components/Register';
-import { Login } from './components/Login';
+import { Exit } from './components/Exit';
+import { Help } from './components/Help';
 import { CreateTask } from './components/CreateTask';
+import { Menu } from './components/Menu';
+
 
 
 function App() {
@@ -13,10 +14,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Username />} />
+        <Route path='/' element={<Menu />} />
         <Route path='/createtask' element={<CreateTask />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/help' element={<Help />} />
+        <Route path='/exit' element={<Exit />} />
       </Routes>
     </BrowserRouter>
     </div>

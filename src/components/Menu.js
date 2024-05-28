@@ -1,24 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CreateTask } from "./CreateTask";
 import { Button } from "./Button";
-import { Username } from "./Username";
 
 export const Menu = () => {
 
   return (
   <div className="menu-container">
-
-    <Username/>
-
     <Link to="/createtask">
-      <Button children="Create Tasks"/>
+      <Button children="Create Tasks" buttonClass="btn menu"/>
     </Link>
     <Link to="/help">
-      <Button children="Help"/>
+      <Button children="Help" buttonClass="btn menu"/>
     </Link>
     <Link to="/exit">
-      <Button children="Exit"/>
+      <Button children="Exit" buttonClass="btn menu"/>
     </Link>
   </div>  
   );
