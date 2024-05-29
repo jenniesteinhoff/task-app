@@ -14,6 +14,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
+        {/*routes created to link between .js files*/}
         <Route path='/' element={<Menu />} />
         <Route path='/createtask' element={<CreateTask />} />
         <Route path='/help' element={<Help />} />

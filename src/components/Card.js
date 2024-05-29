@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export const Card = ({ children }) => {
   return (
   <div className="todo-card">
-  
   {children}
   </div>
   );

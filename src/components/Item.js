@@ -9,6 +9,7 @@ export const Item = ({ todo, handleDelete }) => {
   const [complete, setComplete] = useState(todo.complete);
 
   const handleChange = (e) => {
+    //set icon to complete/green (truthy)
     setComplete(e.target.checked);
   };
 
@@ -20,11 +21,13 @@ export const Item = ({ todo, handleDelete }) => {
           <div className="icons">
 
             <Checkbox 
+            //query about color/icon change based on truthy/falsy
             icon={complete === true ? faCircleCheck : faCircleXmark} 
             label={complete === true ? "icon complete" : "icon incomplete"} 
             value={complete} 
-            onChange={handleChange} />  
-            <FontAwesomeIcon onClick={() => handleDelete(todo.id)} 
+            onChange={handleChange} />
+            {/*delete this task with this id when clicked*/}
+            <FontAwesomeIcon onClick={() => handleDelete(todo.id)}
             className="icon trash" 
             icon={faTrashCan} 
             size="lg" />

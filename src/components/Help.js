@@ -11,6 +11,7 @@ export const Help = () => {
   <div className="help-container">
       <h3>Tips</h3>
       <div className="help-icons">
+        {/*non interactable icons to clarify their meaning*/}
         <FontAwesomeIcon className="help-icon complete" icon={faCircleCheck} size="2xl" />
         <p>Completed</p>
         <FontAwesomeIcon className="help-icon incomplete" icon={faCircleXmark} size="2xl" />

@@ -9,19 +9,21 @@ export const CreateTask = () => {
   const [todo, setTodo] = useState([]);
 
   const addTodo = (newTodo) => {
+    //give item id
     newTodo.id = uuidv4();
     setTodo([newTodo, ...todo]);
   };
 
   const deleteTodo = (id) => {
     if (window.confirm("Are you sure you want to delete your task?")) {
+      //filter out specific id to delete
       setTodo(todo.filter((item) => item.id !== id));
     }
   };
 
   return (
     <div className="createtask-container">
-    <Form addTodo={addTodo} setData={addTodo} />
+    <Form addTodo={addTodo} />
     <List todo={todo} handleDelete={deleteTodo} />
     <Link to="/">
       <Button children="Go Back" buttonClass="btn exit"/>

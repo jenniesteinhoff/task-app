@@ -8,8 +8,10 @@ export const Form = ({ addTodo }) => {
   const [index, setIndex] = useState(1);
 
   const handleSubmit = (e) => {
+    //to prevent default actions of e
     e.preventDefault();
 
+    //give named properties to item
     const newTodo = {
       index,
       title,
@@ -17,15 +19,16 @@ export const Form = ({ addTodo }) => {
       day,
     };
 
+    //inputs cannot be empty
     if (newTodo.title.trim() === "", newTodo.task.trim() === "", newTodo.day === "") {
     alert("Not a valid input")
     }
+    //set tasks limit to avoid visual problems
     else if (newTodo.index === 11) {
     alert("You have reached max amount of tasks")
     }
     else {
     addTodo(newTodo);
-    console.log(newTodo);
     setIndex(index+1);
     setTitle("");
     setTask("");
@@ -35,6 +38,7 @@ export const Form = ({ addTodo }) => {
 
 
   return (
+    //connect form submit to const
     <form onSubmit={handleSubmit} className="form">
       <h2>Add new task</h2>
       <label className="form-label">
@@ -42,6 +46,7 @@ export const Form = ({ addTodo }) => {
         <div className="title-section">
         <p>Title</p>
         <input maxLength={12} value={title} type="text" placeholder="Name your task" onChange={(e) => setTitle(e.target.value)}/>
+        {/*set max length to avoid visual problems, set value to item, onchange to fetch what's written inside input*/}
         </div>
 
         <div className="task-section">
@@ -51,6 +56,7 @@ export const Form = ({ addTodo }) => {
 
         <div className="day-section">
         <p>Day</p>
+        {/*select menu for set days*/}
         <select value={day} onChange={(e) => setDay(e.target.value)}>
           <option value={""} disabled={true}>
             Select Day
